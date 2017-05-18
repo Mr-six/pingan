@@ -43,6 +43,7 @@
   // 录音页
   $('.wolu').on('click', function(event) {
     event.preventDefault();
+    clearTimeout(timer)
     $('#process').css('width', '100%');
     $('#v_time').html('30秒')
     show_next(6)

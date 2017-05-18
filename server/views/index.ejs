@@ -460,6 +460,7 @@
             success: function (res) {
               var shi = $('.shiming').data('shi')
               voice.localId = res.localId;
+              clearTimeout(timer)
               show_next() // 跳转到下一页
               $('#meshi').html(shi)
             },
@@ -478,6 +479,7 @@
           localId: voice.localId, // 需要上传的音频的本地ID，由stopRecord接口获得
           isShowProgressTips: 1, // 默认为1，显示进度提示
           success: function (res) {
+            show_next() // 跳转到下一页
             console.log(voice)
             // 上传数据库逻辑
           }
@@ -485,13 +487,13 @@
       }
 
       // 播放自己的录音
-      $('.myvideo .video-box .btn1').on('touchstart', function(event){
+      $('.myvideo.video-box .btn1').on('touchstart', function(event){
         wx.playVoice({
           localId: voice.localId // 需要播放的音频的本地ID，由stopRecord接口获得
         });
       })
       // 暂停自己的录音
-      $('.myvideo .video-box .btn2').on('touchstart', function(event){
+      $('.myvideo.video-box .btn2').on('touchstart', function(event){
         wx.pauseVoice({
           localId: voice.localId // 需要暂停的音频的本地ID，由stopRecord接口获得
         });
