@@ -29,9 +29,9 @@ app.use(bodyParser.json())
 const staticFile = path.resolve(__dirname, '../app/')
 app.use(express.static(staticFile))
 
-app.get('/', function (req, res) {  // 主页返回
-  res.sendFile('index.html')
-})
+// app.get('/', function (req, res) {  // 主页返回
+//   res.sendFile('index.html')
+// })
 
 app.post('/info', function (req, res){
   console.log(req.body)
@@ -74,7 +74,7 @@ app.get('/muban',function(req,res) {
 // 微信接口调用路由
 app.use('/wx', wxRouter)
 // 微信认证接口
-app.use('/wx-login', wxOauth)
+app.use('/', wxOauth)
 
 app.listen(config.port)
 console.log('Running on http://localhost:' + config.port)

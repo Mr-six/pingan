@@ -11,7 +11,7 @@ router.get('/', function(req, res, next){
   // 第一步：用户同意授权，获取code
   let router = 'get_wx_access_token'
   // 这是编码后的地址
-  let return_uri = encodeURIComponent(base_url + 'wx-login/' + router)
+  let return_uri = encodeURIComponent(base_url + router)
   console.log('回调地址:' + return_uri)
   let scope = 'snsapi_userinfo'
 
