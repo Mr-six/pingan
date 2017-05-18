@@ -1,0 +1,98 @@
+@charset "UTF-8";
+.content.last{
+  display: none;
+  &.bl{
+    display: block;
+  }
+  // 背景图
+  .bg-img{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  // 分数部分
+  .score{
+    position: absolute;
+    width: 40%;
+    left: 28%;
+    top: 19%;
+    text-align: right;
+    #score{
+      color: #f60;
+      font-size: 5rem;
+      letter-spacing: 1rem;
+      // line-height: 1.3em;
+    }
+  }
+  // 文字部分
+  .text{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 32%;
+    text-align: center;
+    font-size: 1.2rem;
+    p{
+      margin-bottom: 0.5rem;
+    }
+    .im{
+      color: red;
+    }
+  }
+  p.in-bottom{
+    position: absolute;
+    bottom: 16%;
+    width: 100%;
+    text-align: center;
+    left: 0;
+  }
+  
+  // 虚拟按钮
+  .v-btn{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: 10%;
+    .res-btn,.share-btn{
+      width: 40%;
+      height: 3rem;
+      background: transparent;
+      position: absolute;
+    }
+    .res-btn{
+      left: 0;
+    }
+    .share-btn{
+      right: 0;
+    }
+  }
+
+  // 表单输入框
+  #form{
+    input{
+      border: 1px solid #ddd;
+      padding: 0.2rem 0.5rem;
+    }
+    .form-group{
+      padding-bottom: 0.5rem;
+    }
+    // 按钮
+    button{
+      padding: 0.2rem 1rem;
+      background: #3eb94e;
+      border: none;
+      border-radius: 0.2rem;
+      color: #fff;
+      &.disabled, &:disabled{
+        background: #999999;
+      }
+    }
+  }
+}

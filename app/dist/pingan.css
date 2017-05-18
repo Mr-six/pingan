@@ -1,0 +1,21 @@
+.shenfen.select{
+  background: rgba(142, 111, 104, 0.3) !important;
+}
+.video-box img.btn2, .video-box.on img.btn1{
+  display: none;
+}
+.video-box.on img.btn2, .video-box img.btn1{
+  display: inline-block;
+}
+.progress-bar{
+  transition: width 1s ease;
+}
+#shi  p {
+  font-size: 2rem;
+}
+#shi .font-little{
+  margin-top: -3rem;
+}
+#shi .font-little p {
+  font-size: 1rem;
+}
