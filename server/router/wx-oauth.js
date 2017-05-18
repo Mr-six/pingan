@@ -60,8 +60,6 @@ router.get('/get_wx_access_token', function(req,res, next){
                 user: {
                   name: userinfo.nickname,
                   userid: userinfo.openid,
-                  shi: '测试',
-                  ups: 100,
                   city: userinfo.city
                 }
               })

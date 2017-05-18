@@ -6,7 +6,7 @@
   var disableBtn = false // 禁用按钮点击
   var score = 0 // 起始分数
   var timer // 计时器
-
+  var user_voice = ''  // 用户录音
 
   // 开启下一页逻辑
   function show_next (page) {
@@ -74,25 +74,38 @@
   // 录音播放(区别本地播放)
   $('.video-box img').on('click', function(event) {
     var parent = $(this).parent('.video-box')
+    var serverid = parent.data('voice')
     parent.toggleClass('on')
-    // 播放本地银屏
+    // 播放本地音频
     if ($(this).hasClass('local')) {
       if (parent.hasClass('on')) {  // 播录音
         voice_control(parent)
       } else {
         voice_control(parent, 1)
       }
+    } else { // 腾讯录音
+      wx.downloadVoice({
+        serverId: serverid, // 需要下载的音频的服务器端ID，由uploadVoice接口获得
+        isShowProgressTips: 1, // 默认为1，显示进度提示
+        success: function (res) {
+         user_voice = res.localId; // 返回音频的本地ID
+        }
+      });
+
     }
+
   });
 
   // 点赞
-  $('.likes').on('click', function(event) {
+  $('document').on('click', '.likes', function(event) {
     var that = $(this)
     if ($(this).hasClass('disable')) return
     $(this).addClass('disable')
     var parent = $(this).parent('.video-box')
+    var userid = parent.data('uid')
     var num = $(this).find('.nub')
     var numb = parseInt(num.html())
+    var 
     event.preventDefault();
     parent.toggleClass('like')
     if (parent.hasClass('like')) {
@@ -102,6 +115,19 @@
     }
     setTimeout(function(){
       that.removeClass('disable')
+      // 发送到数据库
+      $.ajax({
+        type: 'POST',
+        url: '/ups',
+        data: JSON.stringify(ups),
+        contentType: 'application/json',
+        success: function(data){
+          console.log('zan')
+        },
+        error: function(xhr, type){
+          console.log(type)
+        }
+      })
     }, 1000)
   });
 

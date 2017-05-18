@@ -41,6 +41,23 @@ app.post('/info', function (req, res){
   res.end('ok')
 })
 
+// 保存用户信息
+app.post('/user', function (req, res){
+  console.log(req.body)
+  if (req.body) {
+    db_sql.saveUser(req.body)
+  }
+  res.end('ok')
+})
+// 用户点赞
+app.post('/ups', function (req, res){
+  console.log(req.body)
+  if (req.body) {
+    db_sql.ups(req.body)
+  }
+  res.end('ok')
+})
+
 app.get('/getdata', function(req, res) {
   db_sql.getInfo().then((data) => {
     res.json(data)

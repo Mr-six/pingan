@@ -50,7 +50,7 @@ function getInfo () {
         reject(err)
       }
       // 使用连接2017/2/27 下午9:01:16
-      connection.query( 'SELECT * FROM nibansh', function(err, results, fields) {
+      connection.query( 'SELECT * FROM nibansh', function(err, results) {
         if (err) {
           console.error('error connecting: ' + err.stack)
           connection.release();
@@ -74,8 +74,8 @@ function saveUser (user) {
     }
     console.log('connected as id ' + connection.threadId)
     // 写入数据
-    var userAddSql = 'INSERT INTO user(id, nickname, headimgurl, voice, ups, time) VALUE(0,?,?,?,?,?)'
-    var userAddSql_parse = [user.nickname, user.headimgurl, user.voice, user.ups, user.time]
+    var userAddSql = 'INSERT INTO user(id, nickname, useid, city, ups, voice, shi, time, back) VALUE(0,?,?,?,?,?)'
+    var userAddSql_parse = [user.nickname, user.useid, user.city, user.ups, user.voice, user.shi, user.time, user.back]
     connection.query(userAddSql,userAddSql_parse,
       function(err, rows) {
         if (err) {
@@ -101,7 +101,7 @@ function getUser () {
         reject(err)
       }
       // 使用连接2017/2/27 下午9:01:16
-      connection.query( 'SELECT * FROM user', function(err, results, fields) {
+      connection.query( 'SELECT * FROM user', function(err, results) {
         if (err) {
           console.error('error connecting: ' + err.stack)
           connection.release();
@@ -115,12 +115,34 @@ function getUser () {
   })
 }
 
+function ups (usrup) {
+  pool.getConnection(function(err, connection) {
+    if (err) {
+      console.error('error connecting: ' + err.stack)
+      return
+    }
+    // 使用连接2017/2/27 下午9:01:16
+    var upsquery = 'UPDATE user SET ups = ? WHERE useid = ?'
+    var upsquery_params = [usrup.ups, usrup.useid]
+    connection.query( upsquery, upsquery_params, function(err, results) {
+      if (err) {
+        console.error('error connecting: ' + err.stack)
+        connection.release();
+        return 
+      }
+      console.log('一条用户更新成功')
+      connection.release()
+    })
+  })
+}
+
 
 
 var db_sql = {
   saveInfo,
   getInfo,
   saveUser,
-  getUser
+  getUser,
+  ups
 }
 module.exports = db_sql

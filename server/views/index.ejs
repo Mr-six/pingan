@@ -301,6 +301,10 @@
             <img class="btn2" src="./src/img/page2/v-btn2.jpg" alt="">
             <div class="user-name">
               <p><%= user.name %>-<span id="meshi"></span></p>
+              <p class="hide">
+                <span id="usreid"><%= user.userid %></span>
+                <span id="usercity"><%= user.city %></span>
+                </p>
               <!-- <img src="" alt=""> -->
               <p class="waves">
                 <i></i>
@@ -481,9 +485,11 @@
           localId: voice.localId, // 需要上传的音频的本地ID，由stopRecord接口获得
           isShowProgressTips: 1, // 默认为1，显示进度提示
           success: function (res) {
+            voice.serverId = res.serverId
             show_next() // 跳转到下一页
             console.log(voice)
             // 上传数据库逻辑
+            uploadInfo()
           }
         });
       }
@@ -520,6 +526,90 @@
         link: 'http://hh5.wechat2016.com/',
         imgUrl: 'http://hh5.wechat2016.com/src/img/share.jpg'
       });
+
+      // 用户数据上传逻辑
+      function uploadInfo () {
+        var user = {
+          nickname: $('#uname').html(),
+          useid: $('#usreid').html(),
+          city: $('#usrcity').html(),
+          ups: 0,
+          voice: voice.serverId,
+          shi: u_shi,
+          time: (new Date()).toLocaleString(),
+          back: 'back'
+        }
+
+        $.ajax({
+          type: 'POST',
+          url: '/user',
+          data: JSON.stringify(user),
+          contentType: 'application/json',
+
+          // 成功发送
+          success: function(data){
+            layer.open({
+              content: '提交成功'
+              ,skin: 'msg'
+              ,time: 2 //2秒后自动关闭
+            })
+          },
+
+          // 相应出错
+          error: function(xhr, type){
+            layer.open({
+              content: '网络错误'
+              ,skin: 'msg'
+              ,time: 2 //2秒后自动关闭
+            })
+          }
+        })
+      }
+      // 加载服务资源数据
+      function loadservre () {
+        $.ajax({
+          type: 'GET',
+          url: '/getuser',
+          success: function(data){
+            var row = ''
+            if (data && ($.type(data) == 'array')) {
+              data.forEach(function (el, index) {
+                if (!el.voice)  return
+                row += '<div class="video-box" data-uid="' + el.useid + '" data-voice="'+ el.voice +'"> \
+                  <img class="btn1 local" src="./src/img/page2/v-btn.jpg" alt=""> \
+                  <img class="btn2 local" src="./src/img/page2/v-btn2.jpg" alt="">  \
+                  <div class="user-name"> \
+                    <p>' + el.nickname + '-' + el.shi + '</p> \                    
+                    <p class="waves"> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                      <i></i> \
+                    </p> \
+                  </div> \
+                  <div class="likes"> \
+                    <p class="nub"> \
+                    ' + el.ups + '</p> \
+                    <i class="fa fa-heart" style="font-size: 2rem; color: #f94d69;" aria-hidden="true"></i> \
+                    <i class="fa fa-heart-o" style="font-size: 2rem; color: #fff;" aria-hidden="true"></i>\
+                  </div> \
+                </div>'
+              })
+            }
+            $('.server-vioce').append(row)
+          },
+          error: function(xhr, type) {
+            console.log(type)
+          }
+        })
+      }
+
 
     </script>
   </body>

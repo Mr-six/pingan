@@ -18,25 +18,19 @@ create database wxtest character set utf8mb4;
 
 node-mysql 创建数据库
 
-获取信息数据库
 
-```
-create table nibansh (
-  id int unsigned not null auto_increment primary key,
-  prov char(20) not null,
-  tel char(13) null default "-",
-  time char(30)
-  );
-```
 获取微信信息数据库
 ```
 create table user (
   id int unsigned not null auto_increment primary key,
-  nickname char(200) not null,
-  headimgurl char(200) null default "-",
+  nickname char(200) null,
+  useid char(200) null,
+  city char(100) null,
+  ups int null default 0,
   voice char(100) null,
-  ups int not null default 0,
-  time char(50)
+  shi char(100) null,
+  time char(50) null,
+  back char(100) null
   ) CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 
