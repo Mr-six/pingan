@@ -98,7 +98,7 @@ window.wxshare = (function() {
         var debug = (window.location.search.indexOf('__wxdebug__=1') !== -1)
         var data = rsp
         wx.config({
-          debug: true,
+          debug: false,
           appId: 'wx561e2e008f8768ae',
           timestamp: data.timestamp,
           nonceStr: data.nonceStr,
