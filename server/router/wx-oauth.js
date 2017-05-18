@@ -32,7 +32,7 @@ router.get('/get_wx_access_token', function(req,res, next){
       if(response.statusCode === 200){
 
         // 第三步：拉取用户信息(需scope为 snsapi_userinfo)
-        console.log(JSON.parse(body))
+        // console.log(JSON.parse(body))
 
         let data = JSON.parse(body)
         let access_token = data.access_token
