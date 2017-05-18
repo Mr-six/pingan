@@ -420,6 +420,7 @@
 
     <script>
       var voice = {}
+      var u_shi = '祝福'
       var timer // 计时器
       $('#luyin').on('touchstart', function(event){
         var btn = $(this)
@@ -463,6 +464,14 @@
               clearTimeout(timer)
               show_next() // 跳转到下一页
               $('#meshi').html(shi)
+
+              window.wxshare.config({
+                title: '信任接力，成长不孤独',
+                desc:  $('#uname').html() + '为山区希望小学的孩子们录了一首“' + u_shi +'”，你也来听听吧~',
+                link: 'http://hh5.wechat2016.com/',
+                imgUrl: 'http://hh5.wechat2016.com/src/img/share.jpg'
+              });
+              
             },
             fail: function (res) {
               alert(JSON.stringify(res));
@@ -514,7 +523,7 @@
 
       window.wxshare.config({
         title: '信任接力，成长不孤独',
-        desc:  $('#uname').html() + '为山区希望小学的孩子们录了一首“' + $('#ushi').html() +'”，你也来听听吧~',
+        desc:  $('#uname').html() + '为山区希望小学的孩子们录了一首“' + u_shi +'”，你也来听听吧~',
         link: 'http://hh5.wechat2016.com/',
         imgUrl: 'http://hh5.wechat2016.com/src/img/share.jpg'
       });
