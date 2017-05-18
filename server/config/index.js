@@ -1,8 +1,8 @@
 module.exports = {
-  token: 'crazycss_token',
-  encodingaeskey: 'FVQhZ5SWspIkuB7TordwiDEBvoqqoYPjJbo1lk505O8',
-  appid: 'wx561e2e008f8768ae',
-  appsecret: 'ec1db659548557aca56beb77e1e1bda5',
+  token: 'weixinqiang',
+  encodingaeskey: 'ojX6265ThJQkPik6lYKxw3wTbgEkihMm7l6Ijdt3Qku',
+  appid: 'wx86f5a7722a8283f7',
+  appsecret: '4d3ff9798d68a1390506a966400dbbbb',
   port: 80,
 
   base_url: 'http://hh5.wechat2016.com/',
