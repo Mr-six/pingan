@@ -5,7 +5,7 @@ module.exports = {
   appsecret: 'ec1db659548557aca56beb77e1e1bda5',
   port: 80,
 
-  base_url: 'http://test.wechat2016.com/',
+  base_url: 'http://hh5.wechat2016.com/',
 
   // 获取getToken URL
   gettoken_url: 'https://api.weixin.qq.com/cgi-bin/token?',
