@@ -46,6 +46,7 @@
     clearTimeout(timer)
     $('#process').css('width', '100%');
     $('#v_time').html('30秒')
+    $('#luyin').removeClass('recording')
     show_next(6)
   });
 
