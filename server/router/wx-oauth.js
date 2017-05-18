@@ -66,13 +66,13 @@ router.get('/get_wx_access_token', function(req,res, next){
                 }
               })
               // 储存用户信息
-              db_sql.saveUser({
-                nickname: userinfo.nickname,
-                headimgurl: userinfo.headimgurl,
-                voice: null,
-                ups: 0,
-                time: new Date()
-              })
+              // db_sql.saveUser({
+              //   nickname: userinfo.nickname,
+              //   headimgurl: userinfo.headimgurl,
+              //   voice: null,
+              //   ups: 0,
+              //   time: new Date()
+              // })
 
             }else{
               console.log(response.statusCode)
