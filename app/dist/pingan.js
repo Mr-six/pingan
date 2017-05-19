@@ -123,6 +123,10 @@
     }
     setTimeout(function(){
       that.removeClass('disable')
+      var ups = {
+        ups: numb,
+        useid: userid
+      }
       // 发送到数据库
       $.ajax({
         type: 'POST',
