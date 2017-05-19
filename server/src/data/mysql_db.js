@@ -74,7 +74,7 @@ function saveUser (user) {
     }
     console.log('connected as id ' + connection.threadId)
     // 写入数据
-    var userAddSql = 'INSERT INTO user(id, nickname, useid, city, ups, voice, shi, time, back) VALUE(0,?,?,?,?,?)'
+    var userAddSql = 'INSERT INTO user(id, nickname, useid, city, ups, voice, shi, time, back) VALUE(0,?,?,?,?,?,?,?,?)'
     var userAddSql_parse = [user.nickname, user.useid, user.city, user.ups, user.voice, user.shi, user.time, user.back]
     connection.query(userAddSql,userAddSql_parse,
       function(err, rows) {

@@ -88,9 +88,18 @@
         serverId: serverid, // 需要下载的音频的服务器端ID，由uploadVoice接口获得
         isShowProgressTips: 1, // 默认为1，显示进度提示
         success: function (res) {
-         user_voice = res.localId; // 返回音频的本地ID
+          user_voice = res.localId; // 返回音频的本地ID
+          if (parent.hasClass('on')) {  // 开启录音
+            wx.playVoice({
+                localId: user_voice // 需要播放的音频的本地ID
+            });
+          } else {
+            wx.pauseVoice({
+                localId: user_voice // 需要暂停的音频的本地ID
+            });
+          }
         }
-      });
+      });       
 
     }
 
