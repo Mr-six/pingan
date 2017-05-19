@@ -72,7 +72,7 @@
   });
 
   // 录音播放(区别本地播放)
-  $('.video-box img').on('click', function(event) {
+  $('body').on('click', '.video-box img' function(event) {
     var parent = $(this).parent('.video-box')
     var serverid = parent.data('voice')
     parent.toggleClass('on')
@@ -117,9 +117,11 @@
     event.preventDefault();
     parent.toggleClass('like')
     if (parent.hasClass('like')) {
-      num.html(numb + 1)
+      numb++
+      num.html(numb)
     } else {
-      num.html(numb - 1)
+      numb--
+      num.html(numb)
     }
     setTimeout(function(){
       that.removeClass('disable')
