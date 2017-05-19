@@ -114,7 +114,6 @@
     var userid = parent.data('uid')
     var num = $(this).find('.nub')
     var numb = parseInt(num.html())
-    var 
     event.preventDefault();
     parent.toggleClass('like')
     if (parent.hasClass('like')) {
