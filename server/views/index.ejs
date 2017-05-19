@@ -464,6 +464,7 @@
           wx.stopRecord({
             success: function (res) {
               var shi = $('.shiming').data('shi')
+              u_shi = shi
               voice.localId = res.localId;
               clearTimeout(timer)
               show_next() // 跳转到下一页
@@ -602,6 +603,7 @@
               })
             }
             $('.server-vioce').append(row)
+            console.log(row)
           },
           error: function(xhr, type) {
             console.log(type)

@@ -106,7 +106,7 @@
   });
 
   // 点赞
-  $('document').on('click', '.likes', function(event) {
+  $('body').on('click', '.likes', function(event) {
     var that = $(this)
     if ($(this).hasClass('disable')) return
     $(this).addClass('disable')
