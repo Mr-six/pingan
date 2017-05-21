@@ -72,7 +72,7 @@
   });
 
   // 录音播放(区别本地播放)
-  $('body').on('click', '.video-box img', function(event) {
+  $('body').on('touchstart', '.video-box img', function(event) {
     var parent = $(this).parent('.video-box')
     var serverid = parent.data('voice')
     parent.toggleClass('on')
